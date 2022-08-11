@@ -1,0 +1,241 @@
+<template>
+  <div class="container">
+    <div class="error">
+      <h1>404错误</h1>
+      <p class="text">哎呀 , 找不到了</p>
+      <section class="error-container">
+        <span>4</span>
+        <span><span class="screen-reader-text"></span></span>
+        <span>4</span>
+      </section>
+    </div>
+  </div>
+</template>
+
+<script>
+  export default {
+    name: 'notFound'
+  }
+</script>
+
+<style scoped>
+  .container {
+    max-width: 100%;
+    height: 100vh;
+    background-color: #416475;
+  }
+  .error {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: center;
+    user-select: none;
+  }
+
+  h1 {
+    color: #a8d5eb;
+    letter-spacing: 6px;
+  }
+
+  .text {
+    font-size: 28px;
+    color: #93b3c4;
+    font-weight: 600;
+    margin-top: 20px;
+  }
+
+  .error-container {
+    position: relative;
+    font-family: Arial, sans-serif;
+    font-size: 240px;
+    font-weight: 800;
+  }
+
+  .error-container>span {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .error-container>span:nth-child(1) {
+    color: #d1f2a5;
+    animation: colordancing 4s infinite;
+  }
+
+  .error-container>span:nth-child(3) {
+    color: #f56991;
+    animation: colordancing2 4s infinite;
+  }
+
+  .error-container>span:nth-child(2) {
+    width: 140px;
+    height: 140px;
+  }
+
+  .error-container>span:nth-child(2):before,
+  .error-container>span:nth-child(2):after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    animation: shadowdancing 4s infinite;
+  }
+
+  .error-container>span:nth-child(2):before {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .screen-reader-text {
+    position: absolute;
+    top: -9999em;
+    left: -9999em;
+  }
+
+  @media screen and (max-width: 600px) {
+    .error-container {
+      font-size: 120px;
+      top: 10px;
+      transition: all 1s;
+    }
+
+    .error-container>span:nth-child(2) {
+      width: 72px;
+      height: 72px;
+    }
+
+    .error-container>span:nth-child(2):before,
+    .error-container>span:nth-child(2):after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: inherit;
+      height: inherit;
+      border-radius: 50%;
+      animation: shadowdancing2 4s infinite;
+    }
+  }
+
+  @keyframes shadowdancing {
+    0% {
+      box-shadow: inset 30px 0 0 rgba(209, 242, 165, 0.4),
+        inset 0 30px 0 rgba(239, 250, 180, 0.4),
+        inset -30px 0 0 rgba(255, 196, 140, 0.4),
+        inset 0 -30px 0 rgba(245, 105, 145, 0.4);
+    }
+
+    25% {
+      box-shadow: inset 30px 0 0 rgba(245, 105, 145, 0.4),
+        inset 0 30px 0 rgba(209, 242, 165, 0.4),
+        inset -30px 0 0 rgba(239, 250, 180, 0.4),
+        inset 0 -30px 0 rgba(255, 196, 140, 0.4);
+    }
+
+    50% {
+      box-shadow: inset 30px 0 0 rgba(255, 196, 140, 0.4),
+        inset 0 30px 0 rgba(245, 105, 145, 0.4),
+        inset -30px 0 0 rgba(209, 242, 165, 0.4),
+        inset 0 -30px 0 rgba(239, 250, 180, 0.4);
+    }
+
+    75% {
+      box-shadow: inset 30px 0 0 rgba(239, 250, 180, 0.4),
+        inset 0 30px 0 rgba(255, 196, 140, 0.4),
+        inset -30px 0 0 rgba(245, 105, 145, 0.4),
+        inset 0 -30px 0 rgba(209, 242, 165, 0.4);
+    }
+
+    100% {
+      box-shadow: inset 30px 0 0 rgba(209, 242, 165, 0.4),
+        inset 0 30px 0 rgba(239, 250, 180, 0.4),
+        inset -30px 0 0 rgba(255, 196, 140, 0.4),
+        inset 0 -30px 0 rgba(245, 105, 145, 0.4);
+    }
+  }
+
+  @keyframes shadowdancing2 {
+    0% {
+      box-shadow: inset 20px 0 0 rgba(209, 242, 165, 0.4),
+        inset 0 20px 0 rgba(239, 250, 180, 0.4),
+        inset -20px 0 0 rgba(255, 196, 140, 0.4),
+        inset 0 -20px 0 rgba(245, 105, 145, 0.4);
+    }
+
+    25% {
+      box-shadow: inset 20px 0 0 rgba(245, 105, 145, 0.4),
+        inset 0 20px 0 rgba(209, 242, 165, 0.4),
+        inset -20px 0 0 rgba(239, 250, 180, 0.4),
+        inset 0 -20px 0 rgba(255, 196, 140, 0.4);
+    }
+
+    50% {
+      box-shadow: inset 20px 0 0 rgba(255, 196, 140, 0.4),
+        inset 0 20px 0 rgba(245, 105, 145, 0.4),
+        inset -20px 0 0 rgba(209, 242, 165, 0.4),
+        inset 0 -20px 0 rgba(239, 250, 180, 0.4);
+    }
+
+    75% {
+      box-shadow: inset 20px 0 0 rgba(239, 250, 180, 0.4),
+        inset 0 20px 0 rgba(255, 196, 140, 0.4),
+        inset -20px 0 0 rgba(245, 105, 145, 0.4),
+        inset 0 -20px 0 rgba(209, 242, 165, 0.4);
+    }
+
+    100% {
+      box-shadow: inset 20px 0 0 rgba(209, 242, 165, 0.4),
+        inset 0 20px 0 rgba(239, 250, 180, 0.4),
+        inset -20px 0 0 rgba(255, 196, 140, 0.4),
+        inset 0 -20px 0 rgba(245, 105, 145, 0.4);
+    }
+  }
+
+  @keyframes colordancing {
+    0% {
+      color: #d1f2a5;
+    }
+
+    25% {
+      color: #f56991;
+    }
+
+    50% {
+      color: #ffc48c;
+    }
+
+    75% {
+      color: #effab4;
+    }
+
+    100% {
+      color: #d1f2a5;
+    }
+  }
+
+  @keyframes colordancing2 {
+    0% {
+      color: #ffc48c;
+    }
+
+    25% {
+      color: #effab4;
+    }
+
+    50% {
+      color: #d1f2a5;
+    }
+
+    75% {
+      color: #f56991;
+    }
+
+    100% {
+      color: #ffc48c;
+    }
+  }
+</style>
