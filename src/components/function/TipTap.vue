@@ -95,6 +95,7 @@
     border-radius: var(--el-input-border-radius,var(--el-border-radius-base));
     box-shadow: 0 0 0 1px var(--el-input-border-color, var(--el-border-color)) inset;
     outline: none;
+    background-color: #ffffff;
     overflow-y: auto;
   }
   .ProseMirror.ProseMirror-primary.ProseMirror-focused {

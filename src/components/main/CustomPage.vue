@@ -24,7 +24,9 @@
   import { useStore } from 'vuex'
   import AddCustomModel from '../function/AddCustomModel.vue'
   import { nanoid } from 'nanoid'
-
+  import saveJSON from '@/hooks/saveJSON'
+  import { ElMessageBox } from 'element-plus'
+  import { encrypt } from '@/hooks/crypto'
   export default {
     name: 'CustomPage',
     components: {
@@ -52,8 +54,33 @@
         form.value.splice(val, 1)
       }
 
+      const exportMessage = () => {
+        ElMessageBox.confirm('是否导出简历数据供下次使用？（导出或不导出都会跳转到查看简历页面）', '导出数据', {
+          confirmButtonText: '导出',
+          cancelButtonText: '不导出',
+          type: 'info',
+        }).then((status) => {
+          if(status == 'confirm') {
+            fullscreenLoading.value = true
+            const encryptData = encrypt({...store.state})
+            saveJSON(encryptData, `${store.state.step1Data.name}的简历数据${store.state.id}`)
+            setTimeout(() => {
+              fullscreenLoading.value = false
+              router.push('/showResume')
+            }, 2000)
+          }
+        }).catch((status) => {
+          if(status == 'cancel') {
+            fullscreenLoading.value = true
+            setTimeout(() => {
+              fullscreenLoading.value = false
+              router.push('/showResume')
+            }, 2000)
+          }
+        })
+      }
+
       const onSubmit = () => {
-        fullscreenLoading.value = true
         if (addModelWindow.value && addModelWindow.value.length > 0) {
           Promise.all(addModelWindow.value.map(item => item.isRulesTrue())).then((result) => {
             if (result.every(value => value)) {
@@ -62,22 +89,17 @@
                 form.value[index] = element.form
               });
               store.commit('commitStep6Data', form.value)
-              setTimeout(() => {
-                fullscreenLoading.value = false
-                router.push('/showResume')
-              }, 1500)
+              exportMessage()
             } else {
-              fullscreenLoading.value = false
               emit('formError')
               return
             }
           }).catch(() => {
-            fullscreenLoading.value = false
             emit('formError')
             return
           })
         } else {
-          router.push('/showResume')
+          exportMessage()
         }
       }
 
@@ -106,8 +128,4 @@
 </script>
 
 <style scoped>
-  .container {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
 </style>

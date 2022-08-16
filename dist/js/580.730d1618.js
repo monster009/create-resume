@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkcreate_resume"]=self["webpackChunkcreate_resume"]||[]).push([[580],{3580:function(e,n,r){r.r(n),r.d(n,{default:function(){return d}});var t=r(8997),c=r(8473);const s={class:"edit"};function a(e,n,r,a,u,i){const o=t.Z;return(0,c.wg)(),(0,c.iD)("div",s,[(0,c.Wm)(o)])}var u={name:"EditView",components:{HeaderMain:t.Z}},i=r(5312);const o=(0,i.Z)(u,[["render",a]]);var d=o}}]);
+//# sourceMappingURL=580.730d1618.js.map

@@ -3,7 +3,7 @@
     <step :msg="'step3'"></step>
     <el-form :model="form" size="large">
       <div v-for="item,index in form" :key="item.id">
-        <h2 style="margin-bottom: 16px;">工作经历{{index + 1}}</h2>
+        <h2 style="margin-bottom: 16px;">工作经历{{index + 1}}{{item.company ? '--' + item.company : ''}}</h2>
         <add-work ref="addWorkWindow" :data="item" @removeWork="removeWork(index)"></add-work>
       </div>
       <el-button type="warning" size="large" style="width: 100%" @click="addWorkExperience">
@@ -43,6 +43,7 @@
           id: nanoid(),
           company: '',
           job: '',
+          department: '',
           inJob: '',
           outJob: '',
           text: ''
@@ -104,8 +105,4 @@
 </script>
 
 <style scoped>
-  .container {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
 </style>

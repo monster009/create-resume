@@ -3,7 +3,7 @@
     <step :msg="'step5'"></step>
     <el-form :model="form" size="large">
       <div v-for="item,index in form" :key="item.id">
-        <h2 style="margin-bottom: 16px;">项目经历{{index + 1}}</h2>
+        <h2 style="margin-bottom: 16px;">项目经历{{index + 1}}{{item.project ? '--' + item.project : ''}}</h2>
         <add-project ref="addProjectWindow" :data="item" @removeProject="removeProject(index)"></add-project>
       </div>
       <el-button type="success" size="large" style="width: 100%" @click="addProject">
@@ -41,11 +41,11 @@
       const addProject = () => {
         const formObj = {
           id: nanoid(),
-          company: '',
-          job: '',
-          inJob: '',
-          outJob: '',
-          tex : ''
+          project: '',
+          inProject: '',
+          outProject: '',
+          text: '',
+          link : ''
         }
         form.value.push(formObj)
       }
@@ -101,8 +101,4 @@
 </script>
 
 <style scoped>
-  .container {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
 </style>

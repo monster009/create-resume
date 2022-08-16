@@ -3,7 +3,7 @@
     <step :msg="'step4'"></step>
     <el-form :model="form" size="large">
       <div v-for="item,index in form" :key="item.id">
-        <h2 style="margin-bottom: 16px;">教育背景{{index + 1}}</h2>
+        <h2 style="margin-bottom: 16px;">教育背景{{index + 1}}{{item.college ? `--${item.college}/${item.education}` : ''}}</h2>
         <add-education ref="addEducationWindow" :data="item" @removeEducation="removeEducation(index)"></add-education>
       </div>
       <el-button type="primary" size="large" style="width: 100%" @click="addEducationalBackground">
@@ -101,8 +101,4 @@
 </script>
 
 <style scoped>
-  .container {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
 </style>

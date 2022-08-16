@@ -60,8 +60,5 @@
 </script>
 
 <style>
-  .container {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
 </style>
+

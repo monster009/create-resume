@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import store from '../store/index'
 
 const routes = [
   {
@@ -36,6 +37,18 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const { state } = store
+
+  const res = /\/edit\/step[2-6]/
+  // encryptData
+  if (res.test(to.path) && (!state.step1Data.name || !state.step1Data.sex)) {
+    next('/edit/step1')
+  } else {
+    next()
+  }
 })
 
 export default router

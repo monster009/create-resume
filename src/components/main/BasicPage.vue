@@ -31,7 +31,19 @@
         </el-form-item>
       </div>
       <el-form-item label="居住地">
-        <elui-china-area-dht v-model="form.address" ></elui-china-area-dht>
+        <elui-china-area-dht v-model="form.address" placeholder="详细地址" clearable ></elui-china-area-dht>
+      </el-form-item>
+      <el-form-item label="当前状态">
+        <el-select v-model="form.currentState" placeholder="在职/离职" clearable>
+          <el-option value="在职-一个月内到岗" />
+          <el-option value="在职-两周内到岗" />
+          <el-option value="在职-一周内到岗" />
+          <el-option value="在职-随时到岗" />
+          <el-option value="离职-一个月内到岗" />
+          <el-option value="离职-两周内到岗" />
+          <el-option value="离职-一周内到岗" />
+          <el-option value="离职-随时到岗" />
+        </el-select>
       </el-form-item>
       <el-form-item label="个人照片">
         <el-upload
@@ -100,6 +112,7 @@
         email: '',
         wechat: '',
         address: [],
+        currentState: '',
         avatar:  ''
       })
 
@@ -151,7 +164,6 @@
           if (valid) {
             store.commit('commitStep1Data', form)
             router.push('/edit/step2')
-            
           } else {
             emit('formError')
             return false
@@ -178,10 +190,6 @@
 </script>
 
 <style scoped>
-  .container {
-    max-width: 1000px;
-    margin: 0 auto;
-  }
 </style>
 
 <style>
@@ -228,12 +236,6 @@
   }
   
   @media (max-width: 767.98px) {
-    /* .el-select--large, .el-cascader--large, .el-date-editor.el-input {
-      width: 100%;
-    }
-    .el-input--large .el-input__wrapper {
-      width: calc(100% - 30px);
-    } */
     .el-form-item--large .el-form-item__label {
       width: 80px;
     }

@@ -1,4 +1,5 @@
 import { createStore } from 'vuex'
+import { nanoid } from 'nanoid'
 // import { EluiChinaAreaDht } from 'elui-china-area-dht'
 // // const chinaData = new EluiChinaAreaDht.ChinaArea().chinaAreaflat
 // // const getChinaData = (arr) => {
@@ -9,16 +10,17 @@ import { createStore } from 'vuex'
 
 export default createStore({
   state: {
+    id: nanoid(),
     step1Data: {
       name: '',
       sex: '',
       birthday: '',
-      showAge: false,
       phoneNumber: '',
       email: '',
       wechat: '',
       address: [],
-      avatar: ''
+      currentState: '',
+      avatar: '',
     },
     step2Data: '',
     step3Data: [],
@@ -48,7 +50,10 @@ export default createStore({
       state.step6Data = payload
     },
     commitAllData (state, payload) {
-      Object.keys(state).forEach(i=>{state[i] = payload[i] || state[i]});
+      Object.keys(state).forEach(i=>{state[i] = payload[i] || state[i]})
+    },
+    resetData (state) {
+      Object.keys(state).forEach(i=>{state[i] = ''})
     }
   },
   actions: {

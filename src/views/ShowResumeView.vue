@@ -1,16 +1,16 @@
 <template>
   <div class="showResume">
-    <header-main></header-main>
+    <header-aside-main></header-aside-main>
   </div>
 </template>
 
 <script>
-import HeaderMain from '@/components/layout/HeaderMain.vue'
+import HeaderAsideMain from '@/components/layout/HeaderAsideMain.vue'
 
 export default {
   name: 'ShowResume',
   components: {
-    HeaderMain
+    HeaderAsideMain
   }
 }
 </script>

@@ -4,6 +4,9 @@
       <el-form-item label="公司名称" prop="company" >
         <el-input v-model="form.company" placeholder="请输入公司名称" clearable />
       </el-form-item>
+      <el-form-item label="部门名称" >
+        <el-input v-model="form.department" placeholder="请输入部门名称" />
+      </el-form-item>
       <el-form-item label="职位名称" prop="company" >
         <el-input v-model="form.job" placeholder="请输入职位名称" clearable />
       </el-form-item>
