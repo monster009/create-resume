@@ -1,8 +1,8 @@
 import CryptoJS from "crypto-js";
 // 十六位十六进制数作为密钥
-const SECRET_KEY = CryptoJS.enc.Utf8.parse("1234123412341234")
+const SECRET_KEY = CryptoJS.enc.Utf8.parse("503d694049b06ec7")
 // 十六位十六进制数作为密钥偏移量
-const SECRET_IV = CryptoJS.enc.Utf8.parse("1234123412341234")
+const SECRET_IV = CryptoJS.enc.Utf8.parse("12b7633875ebafb6")
 
 /**
  * 加密方法

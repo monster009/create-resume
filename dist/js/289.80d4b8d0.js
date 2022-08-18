@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkcreate_resume"]=self["webpackChunkcreate_resume"]||[]).push([[289],{7289:function(e,n,r){r.r(n),r.d(n,{default:function(){return m}});var t=r(1431),c=r(8473);const s={class:"home"};function a(e,n,r,a,u,o){const i=t.Z;return(0,c.wg)(),(0,c.iD)("div",s,[(0,c.Wm)(i)])}var u={name:"HomeView",components:{HeaderMain:t.Z}},o=r(5312);const i=(0,o.Z)(u,[["render",a]]);var m=i}}]);
+//# sourceMappingURL=289.80d4b8d0.js.map

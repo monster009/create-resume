@@ -58,14 +58,22 @@
         const reader= new FileReader()
         reader.readAsText(file, "utf-8")
         reader.onload = function () {
-          const decryptData = decrypt(reader.result)
-          const data = JSON.parse(decryptData)
           const key1 = Object.keys(store.state)
-          const key2 = Object.keys(data)
-          if (key1.length === key2.length && key1.sort().toString() === key2.sort().toString()) {
-            store.commit('commitAllData', data)
-            ElMessage.success('导入成功')
-          } else {
+          let key2, data
+          try {
+            const decryptData = decrypt(reader.result)
+            data = JSON.parse(decryptData)
+            key2 = Object.keys(data)
+
+            if (key1.length === key2.length && key1.sort().toString() === key2.sort().toString()) {
+              store.commit('commitAllData', data)
+              ElMessage.success('导入成功')
+            } else {
+              ElMessageBox.alert('Error：该json文件不是此网站导出的数据文件，或采用其他编辑软件进行了错误的修改。','错误',{
+                type:'error'
+              })
+            }
+          } catch (err) {
             ElMessageBox.alert('Error：该json文件不是此网站导出的数据文件，或采用其他编辑软件进行了错误的修改。','错误',{
               type:'error'
             })

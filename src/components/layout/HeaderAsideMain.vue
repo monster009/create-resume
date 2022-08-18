@@ -16,6 +16,33 @@
               <el-form-item :label="form.showAge ? '显示年龄' : '显示生日'">
                 <el-switch v-model="form.showAge" />
               </el-form-item>
+              <el-form-item label="名字字号">
+                <el-slider v-model="form.nameSize" :max="50" />
+              </el-form-item>
+              <el-form-item label="文本字号">
+                <el-slider v-model="form.fontSize" :max="50" />
+              </el-form-item>
+              <el-form-item label="文本行高">
+                <el-slider v-model="form.lineHeight" :max="100"/>
+              </el-form-item>
+              <el-form-item label="模块间距">
+                <el-slider v-model="form.moduleMt" :max="100" />
+              </el-form-item>
+              <el-form-item label="节点间距">
+                <el-slider v-model="form.nodeMt" :max="100" />
+              </el-form-item>
+              <el-form-item label="标题字号">
+                <el-slider v-model="form.h2Size" :max="100" />
+              </el-form-item>
+              <el-form-item label="标题间距">
+                <el-slider v-model="form.h2Mb" :max="100" />
+              </el-form-item>
+              <el-form-item label="重要文本字号">
+                <el-slider v-model="form.h3Size" :max="50" />
+              </el-form-item>
+              <el-form-item label="加粗文本字号">
+                <el-slider v-model="form.h4Size" :max="50" />
+              </el-form-item>
             </el-form>
           </el-aside>
           <el-main>
@@ -42,11 +69,20 @@ import { reactive } from 'vue-demi'
     setup() {
       const route = useRoute()
       const form = reactive({
-        ptpb: 10,
-        prpl: 10,
-        showAge: false
+        ptpb: 30,
+        prpl: 50,
+        showAge: false,
+        nameSize: 32,
+        fontSize: 16,
+        lineHeight: 16,
+        h2Size: 24,
+        moduleMt: 12,
+        nodeMt: 16,
+        h2Mb: 20,
+        h3Size: 20,
+        h4Size: 18
       })
-      console.log(form);
+      console.log({...form})
       const formError = () => {
         ElMessageBox.alert('请检查是否有必填项为空，并且格式正确', '提交失败', {
           confirmButtonText: '确定'

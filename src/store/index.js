@@ -51,6 +51,7 @@ export default createStore({
     },
     commitAllData (state, payload) {
       Object.keys(state).forEach(i=>{state[i] = payload[i] || state[i]})
+      state.id = 'OJIGFqFzlR7DK8JjHTbh-'
     },
     resetData (state) {
       Object.keys(state).forEach(i=>{state[i] = ''})
