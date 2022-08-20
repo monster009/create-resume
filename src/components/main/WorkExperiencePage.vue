@@ -48,7 +48,6 @@
           outJob: '',
           text: ''
         }
-
         form.value.push(formObj)
       }
 
@@ -65,7 +64,13 @@
               newArr.forEach((element, index) => {
                 form.value[index] = element.form
               });
-              store.commit('commitStep3Data', form.value)
+              const commitFormObj = {
+                id: store.state.step3Data.id,
+                title: '工作经历',
+                data: form.value
+              }
+              if (!commitFormObj.id) commitFormObj.id = nanoid()
+              store.commit('commitStep3Data', commitFormObj)
               router.push('/edit/step4')
             } else {
               emit('formError')
@@ -74,6 +79,12 @@
           }).catch(() => {
             emit('formError')
             return
+          })
+        } else if (addWorkWindow.value.length === 0 && store.state.step3Data.length > 0) {
+          store.commit('commitStep3Data', {
+            id: store.state.step3Data.id,
+            title: '工作经历',
+            data: []
           })
         } else {
           router.push('/edit/step4')
@@ -85,9 +96,9 @@
       }
 
       onMounted(() => {
-        if (store.state.step3Data.length >= 1) {
+        if (store.state.step3Data.data.length >= 1) {
           // 结构深拷贝第一层，不影响store.state.step3Data
-          form.value = [...store.state.step3Data]
+          form.value = [...store.state.step3Data.data]
         }
       })
 

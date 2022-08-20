@@ -98,6 +98,8 @@
             emit('formError')
             return
           })
+        } else if (addModelWindow.value.length === 0 && store.state.step6Data.length > 0) {
+          store.commit('commitStep6Data', [])
         } else {
           exportMessage()
         }

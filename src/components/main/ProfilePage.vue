@@ -17,6 +17,7 @@
   import TipTap from '../function/TipTap.vue'
   import { useRouter } from 'vue-router'
   import { useStore } from 'vuex'
+  import { nanoid } from 'nanoid'
 
   export default {
     name: 'ProfilePage',
@@ -32,7 +33,7 @@
       const text = ref('')
 
       onMounted(() => {
-        text.value = store.state.step2Data ? store.state.step2Data : ''
+        text.value = store.state.step2Data.text ? store.state.step2Data.text : ''
       })
 
       const changeTextFn = (val) => {
@@ -40,7 +41,13 @@
       }
 
       const onSubmit = () => {
-        store.commit('commitStep2Data', text.value)
+        const formObj = {
+          id: store.state.step2Data.id,
+          title: '个人简介',
+          text: text.value
+        }
+        if (!formObj.id) formObj.id = nanoid()
+        store.commit('commitStep2Data', formObj)
         router.push('/edit/step3')
       }
 

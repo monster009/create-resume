@@ -4,8 +4,8 @@ const Components = require('unplugin-vue-components/webpack')
 const { ElementPlusResolver } = require('unplugin-vue-components/resolvers')
 
 module.exports = defineConfig({
+  publicPath: '/create-resume/',
   transpileDependencies: true,
-
   configureWebpack : {
     plugins: [
       AutoImport({

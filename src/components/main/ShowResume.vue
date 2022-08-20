@@ -1,5 +1,7 @@
 <template>
-  <default-style :state="state" :form="form"></default-style>
+  <el-scrollbar>
+    <default-style :state="state" :form="form" :changeIndex="changeIndex"></default-style>
+  </el-scrollbar>
 </template>
 
 <script>
@@ -15,7 +17,8 @@
       DefaultStyle
     },
     props: [
-      'form'
+      'form',
+      'changeIndex'
     ],
     setup () {
       const store = useStore()
@@ -47,7 +50,7 @@
   .a4 {
     box-sizing: border-box;
     width: 100%;
-    max-width: var(--a4-width);
+    max-width: 794px;
     /* height: calc(var(--a4-width) * (297/210)); */
     margin: 0 auto;
     padding: 10px;
@@ -69,15 +72,5 @@
     width: 1050px;
     max-width: unset;
     height: calc(1050px * (297/210));
-  }
-  @media (min-width: 576px) {
-    .container {
-      --a4-width: 420px !important;
-    }
-  }
-  @media (min-width: 768px) {
-    .container {
-      --a4-width: 794px !important;
-    }
   }
 </style>

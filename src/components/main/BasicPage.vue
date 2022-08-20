@@ -90,6 +90,7 @@
   import { useRouter } from 'vue-router'
   import { useStore } from 'vuex'
   import { EluiChinaAreaDht } from 'elui-china-area-dht'
+  import { nanoid } from 'nanoid'
   // const chinaData = new EluiChinaAreaDht.ChinaArea().chinaAreaflat
 
   export default {
@@ -105,6 +106,7 @@
       const formRef = ref()
 
       const form = reactive({
+        id: '',
         name: '',
         sex: '',
         birthday: '',
@@ -118,6 +120,7 @@
 
       onMounted(() => {
         Object.keys(form).forEach(i=>{form[i] = step1Data[i] || form[i]})
+        if (!form.id) form.id = nanoid()
       })
 
 

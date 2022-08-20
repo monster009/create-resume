@@ -62,7 +62,13 @@
               addProjectWindow.value.forEach((element, index) => {
                 form.value[index] = element.form
               });
-              store.commit('commitStep5Data', form.value)
+              const commitFormObj = {
+                id: store.state.step5Data.id,
+                title: '项目经历',
+                data: form.value
+              }
+              if (!commitFormObj.id) commitFormObj.id = nanoid()
+              store.commit('commitStep5Data', commitFormObj)
               router.push('/edit/step6')
             } else {
               emit('formError')
@@ -71,6 +77,12 @@
           }).catch(() => {
             emit('formError')
             return
+          })
+        } else if (addProjectWindow.value.length === 0 && store.state.step5Data.length > 0) {
+          store.commit('commitStep5Data', {
+            id: store.state.step5Data.id,
+            title: '项目经历',
+            data: []
           })
         } else {
           router.push('/edit/step6')
@@ -82,8 +94,8 @@
       }
 
       onMounted(() => {
-        if (store.state.step5Data.length >= 1) {
-          form.value = [ ...store.state.step5Data ]
+        if (store.state.step5Data.data.length >= 1) {
+          form.value = [ ...store.state.step5Data.data ]
         }
       })
 

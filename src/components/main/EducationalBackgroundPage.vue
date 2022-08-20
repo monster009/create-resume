@@ -62,7 +62,13 @@
               addEducationWindow.value.forEach((element, index) => {
                 form.value[index] = element.form
               });
-              store.commit('commitStep4Data', form.value)
+              const commitFormObj = {
+                id: store.state.step4Data.id,
+                title: '教育背景',
+                data: form.value
+              }
+              if (!commitFormObj.id) commitFormObj.id = nanoid()
+              store.commit('commitStep4Data', commitFormObj)
               router.push('/edit/step5')
             } else {
               emit('formError')
@@ -71,6 +77,12 @@
           }).catch(() => {
             emit('formError')
             return
+          })
+        } else if (addEducationWindow.value.length === 0 && store.state.step4Data.length > 0) {
+          store.commit('commitStep4Data', {
+            id: store.state.step4Data.id,
+            title: '教育背景',
+            data: []
           })
         } else {
           router.push('/edit/step5')
@@ -82,8 +94,8 @@
       }
       
       onMounted(() => {
-        if (store.state.step4Data.length >= 1) {
-          form.value = [ ...store.state.step4Data ]
+        if (store.state.step4Data.data.length >= 1) {
+          form.value = [ ...store.state.step4Data.data ]
         }
       })
 

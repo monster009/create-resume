@@ -1,7 +1,7 @@
 <template>
   <div class="container" ref="btnGroup">
     <el-button :type="hasResume ? 'warning' : 'primary'" @click="newResume" @mouseleave="removeClass">{{hasResume?'编辑':'新建'}}简历</el-button>
-    <el-button type="success" v-loading.fullscreen.lock="fullscreenLoading" @click="exResume" @mouseleave="removeClass">查看简历</el-button>
+    <el-button type="success" v-loading.fullscreen.lock="fullscreenLoading" @click="exResume" @mouseleave="removeClass">导出简历</el-button>
   </div>
 </template>
 
