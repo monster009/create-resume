@@ -30,6 +30,9 @@
           <el-date-picker v-model="form.birthday" type="date" placeholder="出生日期" />
         </el-form-item>
       </div>
+      <el-form-item label="博客链接">
+          <el-input v-model="form.github" placeholder="github / 掘金 / csdn ..." clearable />
+        </el-form-item>
       <el-form-item label="居住地">
         <elui-china-area-dht v-model="form.address" placeholder="详细地址" clearable ></elui-china-area-dht>
       </el-form-item>
@@ -113,6 +116,7 @@
         phoneNumber: '',
         email: '',
         wechat: '',
+        github: '',
         address: [],
         currentState: '',
         avatar:  ''

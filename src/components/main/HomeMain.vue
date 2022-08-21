@@ -3,6 +3,7 @@
     <el-button :type="hasResume ? 'warning' : 'primary'" @click="newResume" @mouseleave="removeClass">{{hasResume?'编辑':'新建'}}简历</el-button>
     <el-button type="success" v-loading.fullscreen.lock="fullscreenLoading" @click="exResume" @mouseleave="removeClass">导出简历</el-button>
   </div>
+  <a href="mailto:32413082@qq.com" style="position: absolute;right: 12px;bottom: 8px;color: #409eff;text-decoration: underline;">feedback:<span>32413082@qq.com</span></a>
 </template>
 
 <script>
@@ -29,6 +30,25 @@
       }
 
       onMounted(() => {
+        
+        if (!localStorage.getItem('hiddenAppTips')) {
+          ElMessageBox.confirm(
+            '本网站为为个人性质的简历编辑导出网站，没有任何网络接口请求，页面加载完成后断网也可继续操作，绝对安全私密，尽可放心使用。<br><strong>桌面端：</strong>可使用该网站全部功能。<br><strong>移动端：</strong>只能使用编辑页面的功能，不太兼容导出pdf的功能，(移动端可使用编辑页面导出您的简历数据之后,再在桌面端导入数据再导出pdf。)<br>如有建议或反馈请联系我：<a style="color: #409EFF;text-decoration: underline;" href="mailto:32413082@qq.com">32413082@qq.com</a>',
+            '小提示',
+            {
+              confirmButtonText: '确定',
+              cancelButtonText: '不再提示',
+              draggable: true,
+              dangerouslyUseHTMLString: true,
+              distinguishCancelAndClose: true
+            }
+          ).catch((status) => {
+            if(status === 'cancel') {
+              localStorage.setItem('hiddenAppTips', 'true')
+            }
+          })
+        }
+
         for (let i = 0; i < btnGroup.value.children.length; i++) {
           const element = btnGroup.value.children[i]
           element.addEventListener("mouseenter", () => {

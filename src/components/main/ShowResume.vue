@@ -51,16 +51,11 @@
     box-sizing: border-box;
     width: 100%;
     max-width: 794px;
-    /* height: calc(var(--a4-width) * (297/210)); */
+    /* height: calc(794px * (297/210)); */
     margin: 0 auto;
-    padding: 10px;
     text-align: left;
-    background-color: white;
+    background-color: #ffffff;
     box-shadow: 0 0 10px 4px rgba(0, 0, 0, .3);
-    /* word-break: break-all; */
-  }
-  .a4:not(:last-child) {
-    margin-bottom: 40px;
   }
   #ampn, canvas {
     position: absolute;
@@ -71,6 +66,6 @@
     /* 宽度过高ios会失效 */  
     width: 1050px;
     max-width: unset;
-    height: calc(1050px * (297/210));
+    box-shadow: unset;
   }
 </style>

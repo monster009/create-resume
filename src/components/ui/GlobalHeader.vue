@@ -11,20 +11,22 @@
             d="M729.219 104.182H169.593c-25.964 0-47.199 20.13-48.989 45.592V844.03a49.045 49.045 0 0 0 48.935 45.61H493.75c1.964-60.971 29.087-117.734 73.749-157.467-10.512-22.073-15.913-46.43-15.605-71.562.527-42.893 17.62-83.12 48.137-113.27 30.524-30.15 70.959-46.752 113.859-46.752 22.504 0 44.327 4.576 64.4 13.272V153.253c0-27.143-21.986-49.071-49.071-49.071zM435.726 582.004H267.457a27.411 27.411 0 0 1-23.736-13.708 27.402 27.402 0 0 1 0-27.414 27.402 27.402 0 0 1 23.736-13.706h168.269c15.143 0 27.413 12.27 27.413 27.413 0 15.14-12.27 27.415-27.413 27.415zm102.088-167.773H267.517c-15.142 0-27.415-12.272-27.415-27.414 0-15.138 12.273-27.413 27.415-27.413h270.297c15.143 0 27.414 12.275 27.414 27.413 0 15.142-12.271 27.414-27.414 27.414zm0-145.565H267.517c-15.142 0-27.415-12.276-27.415-27.418 0-15.137 12.273-27.413 27.415-27.413h270.297c15.143 0 27.414 12.276 27.414 27.413 0 15.142-12.271 27.418-27.414 27.418z"
             fill="#1D92FF" /></svg><strong class="logo-name">创建个人简历</strong>
       </router-link>
-      <el-upload
-        v-if="route.name === 'home' && !hasData"
-        ref="upload"
-        :limit="1"
-        :auto-upload="false"
-        :show-file-list="false"
-        @change="handleChange"
-        accept="application/json"
-      >
-        <template #trigger>
-          <el-button type="primary">导入数据</el-button>
-        </template>
-      </el-upload>
-      <el-button v-if="route.name === 'home' && hasData" type="danger" @click="resetting()">重置数据</el-button>
+      <div>
+        <el-upload
+          v-if="route.name === 'home' && !hasData"
+          ref="upload"
+          :limit="1"
+          :auto-upload="false"
+          :show-file-list="false"
+          @change="handleChange"
+          accept="application/json"
+        >
+          <template #trigger>
+            <el-button type="primary">导入数据</el-button>
+          </template>
+        </el-upload>
+        <el-button v-if="route.name === 'home' && hasData" type="danger" @click="resetting()">重置数据</el-button>
+      </div>
     </div>
   </el-header>
 </template>
@@ -107,7 +109,7 @@
     height: 100%;
     justify-content: space-between;
     align-items: center;
-    padding: var(--el-header-padding);
+    padding: 0 8px 0 0;
     text-align: left;
   }
   .el-header.dark {
@@ -118,5 +120,10 @@
   .logo {
     display: flex;
     align-items: center;
+  }
+  @media (min-width: 768px) {
+    .header-container {
+      padding: var(--el-header-padding);
+    }
   }
 </style>

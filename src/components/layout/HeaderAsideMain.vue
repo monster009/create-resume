@@ -53,7 +53,7 @@
                   <el-form-item label="加粗文本字号">
                     <el-slider v-model="form.h4Size" :max="50" />
                   </el-form-item>
-                  <el-form-item label="模块排序">
+                  <el-form-item label="模块排序" v-if="equipmentIsPC">
                     <div class="module-sort" style="display: flex; flex-direction: column; flex: 1;">
                       <transition-group type="transition" name="sort">
                         <el-button v-for="item,index in dragData" :key='item.id' type="primary"
@@ -89,6 +89,8 @@
   import { useRoute } from 'vue-router'
   import { useStore } from 'vuex'
   import { ref, reactive, toRefs } from 'vue'
+  import isPC from '@/hooks/isPC'
+
   export default {
     name: 'HeaderMain',
     components: {
@@ -97,6 +99,7 @@
     setup() {
       const route = useRoute()
       const store = useStore()
+      const equipmentIsPC = ref(isPC())
       let dragData = ref(store.getters.getResumeData())
       const hiddenAside = ref(false)
       const form = reactive({
@@ -149,6 +152,7 @@
 
       return {
         route,
+        equipmentIsPC,
         form,
         dragData,
         hiddenAside,
@@ -219,6 +223,7 @@
     border-radius: 10px 10px 0 0;
     transform: translate( -50% , -100%);
     background-color: #323639;
+    cursor: pointer;
   }
   .bi-triangle-fill>strong{
     font-size: 12px;

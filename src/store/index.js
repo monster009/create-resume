@@ -7,10 +7,46 @@ import { nanoid } from 'nanoid'
 // //     return arr.map(item => chinaData[item])
 // //   }
 // // }
+const defaultData = {
+  id: nanoid(),
+  step1Data: {
+    id: '',
+    name: '',
+    sex: '',
+    birthday: '',
+    phoneNumber: '',
+    email: '',
+    wechat: '',
+    address: [],
+    currentState: '',
+    avatar: '',
+  },
+  step2Data: {
+    id: '',
+    title: '个人简介',
+    text: ''
+  },
+  step3Data: {
+    id: '',
+    title: '工作经历',
+    data: []
+  },
+  step4Data: {
+    id: '',
+    title: '教育背景',
+    data: []
+  },
+  step5Data: {
+    id: '',
+    title: '项目经历',
+    data: []
+  },
+  step6Data: []
+}
 
 export default createStore({
   state: {
-    id: nanoid(),
+    id: defaultData.id,
     step1Data: {
       id: '',
       name: '',
@@ -19,9 +55,10 @@ export default createStore({
       phoneNumber: '',
       email: '',
       wechat: '',
+      github: '',
       address: [],
       currentState: '',
-      avatar: '',
+      avatar: ''
     },
     step2Data: {
       id: '',
@@ -73,7 +110,7 @@ export default createStore({
       Object.keys(state).forEach(i=>{state[i] = payload[i] || state[i]})
     },
     resetData (state) {
-      Object.keys(state).forEach(i=>{state[i] = ''})
+      Object.keys(state).forEach(i=>{state[i] = defaultData[i] || state[i]})
     }
   },
   actions: {
