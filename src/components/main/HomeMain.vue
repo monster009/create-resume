@@ -30,8 +30,7 @@
       }
 
       onMounted(() => {
-        
-        if (!localStorage.getItem('hiddenAppTips')) {
+        if (!localStorage.getItem('hiddenAppTips') && !sessionStorage.getItem('tHiddenAppTips')) {
           ElMessageBox.confirm(
             '本网站为为个人性质的简历编辑导出网站，没有任何网络接口请求，页面加载完成后断网也可继续操作，绝对安全私密，尽可放心使用。<br><strong>桌面端：</strong>可使用该网站全部功能。<br><strong>移动端：</strong>只能使用编辑页面的功能，不太兼容导出pdf的功能，(移动端可使用编辑页面导出您的简历数据之后,再在桌面端导入数据再导出pdf。)<br>如有建议或反馈请联系我：<a style="color: #409EFF;text-decoration: underline;" href="mailto:32413082@qq.com">32413082@qq.com</a>',
             '小提示',
@@ -46,6 +45,8 @@
             if(status === 'cancel') {
               localStorage.setItem('hiddenAppTips', 'true')
             }
+          }).finally(() => {
+            sessionStorage.setItem('tHiddenAppTips', 'true')
           })
         }
 
