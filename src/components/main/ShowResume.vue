@@ -51,7 +51,7 @@
     box-sizing: border-box;
     width: 100%;
     max-width: 794px;
-    /* height: calc(794px * (297/210)); */
+    min-height: calc(794px * (297/210));
     margin: 0 auto;
     text-align: left;
     background-color: #ffffff;

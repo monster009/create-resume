@@ -36,7 +36,7 @@
       const store = useStore()
       const formRef = ref()
       const form = ref([])
-      const addProjectWindow = ref()
+      const addProjectWindow = ref([])
 
       const addProject = () => {
         const formObj = {
@@ -78,7 +78,7 @@
             emit('formError')
             return
           })
-        } else if (addProjectWindow.value.length === 0 && store.state.step5Data.length > 0) {
+        } else if (addProjectWindow.value.length === 0 && store.state.step5Data.data && store.state.step5Data.data.length > 0) {
           store.commit('commitStep5Data', {
             id: store.state.step5Data.id,
             title: '项目经历',

@@ -36,7 +36,7 @@
       const store = useStore()
       const formRef = ref()
       const form = ref([])
-      const addWorkWindow = ref()
+      const addWorkWindow = ref([])
 
       const addWorkExperience = () => {
         const formObj = {
@@ -80,7 +80,7 @@
             emit('formError')
             return
           })
-        } else if (addWorkWindow.value.length === 0 && store.state.step3Data.length > 0) {
+        } else if (addWorkWindow.value.length === 0 && store.state.step3Data.data && store.state.step3Data.data.length > 0) {
           store.commit('commitStep3Data', {
             id: store.state.step3Data.id,
             title: '工作经历',

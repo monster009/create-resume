@@ -39,7 +39,7 @@
       const formRef = ref()
       const form = ref([])
       const fullscreenLoading = ref(false)
-      const addModelWindow = ref()
+      const addModelWindow = ref([])
 
       const addModel = () => {
         const formObj = {
@@ -98,7 +98,7 @@
             emit('formError')
             return
           })
-        } else if (addModelWindow.value.length === 0 && store.state.step6Data.length > 0) {
+        } else if (addModelWindow.value.length === 0 && store.state.step6Data && store.state.step6Data.length > 0) {
           store.commit('commitStep6Data', [])
         } else {
           exportMessage()

@@ -26,4 +26,74 @@ export default {
       --el-main-padding: 12px;
     }
   }
+
+
+  /**
+   * @description: fadeIn style
+   * @return {*}
+   */
+   [data-fadeIn] {
+    opacity: 0;
+   }
+  .fade-in {
+    animation-fill-mode: forwards;
+    animation: fadeInUp 1s 0.2s ease both;
+  }
+  .fade-in[fade-in-up] {
+    animation-name: fadeInUp;
+  }
+  .fade-in[fade-in-down] {
+    animation-name: fadeInDown;
+  }
+  .fade-in[fade-in-right] {
+    animation-name: fadeInRight;
+  }
+  .fade-in[fade-in-left] {
+    animation-name: fadeInLeft;
+  }
+
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeInDown {
+    0% {
+      opacity: 0;
+      transform: translateY(-40px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes fadeInRight {
+    0% {
+      opacity: 0;
+      transform: translateX(-40px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+  @keyframes fadeInLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(40px);
+    }
+
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
 </style>

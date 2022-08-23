@@ -234,11 +234,6 @@
     max-width: 1620px;
     margin-bottom: 40px;
   }
-  .a4 {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
   .a4-container {
     font-size: 16px;
     line-height: 1.3;

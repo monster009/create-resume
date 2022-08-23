@@ -36,7 +36,7 @@
       const store = useStore()
       const formRef = ref()
       const form = ref([])
-      const addEducationWindow = ref()
+      const addEducationWindow = ref([])
 
       const addEducationalBackground = () => {
         const formObj = {
@@ -78,7 +78,7 @@
             emit('formError')
             return
           })
-        } else if (addEducationWindow.value.length === 0 && store.state.step4Data.length > 0) {
+        } else if (addEducationWindow.value.length === 0 && store.state.step4Data.data && store.state.step4Data.data.length > 0) {
           store.commit('commitStep4Data', {
             id: store.state.step4Data.id,
             title: '教育背景',
