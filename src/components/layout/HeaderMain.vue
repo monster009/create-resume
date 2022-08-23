@@ -3,15 +3,17 @@
     <el-container direction="vertical">
       <global-header :route="route"></global-header>
       <el-main>
-        <div class="main-container">
-          <basic-page v-if="route.params.id === 'step1'" @formError="formError"></basic-page>
-          <profile-page v-else-if="route.params.id === 'step2'" ></profile-page>
-          <work-experience-page v-else-if="route.params.id === 'step3'" @formError="formError"></work-experience-page>
-          <educational-background-page v-else-if="route.params.id === 'step4'" @formError="formError"></educational-background-page>
-          <projects-page v-else-if="route.params.id === 'step5'" @formError="formError"></projects-page>
-          <custom-page v-else-if="route.params.id === 'step6'" @formError="formError"></custom-page>
-          <home-main v-else></home-main>
-        </div>
+        <el-scrollbar>
+          <div class="main-container">
+            <basic-page v-if="route.params.id === 'step1'" @formError="formError"></basic-page>
+            <profile-page v-else-if="route.params.id === 'step2'" ></profile-page>
+            <work-experience-page v-else-if="route.params.id === 'step3'" @formError="formError"></work-experience-page>
+            <educational-background-page v-else-if="route.params.id === 'step4'" @formError="formError"></educational-background-page>
+            <projects-page v-else-if="route.params.id === 'step5'" @formError="formError"></projects-page>
+            <custom-page v-else-if="route.params.id === 'step6'" @formError="formError"></custom-page>
+            <home-main v-else></home-main>
+          </div>
+        </el-scrollbar>
       </el-main>
     </el-container>
   </div>

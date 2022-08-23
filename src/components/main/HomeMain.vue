@@ -1,9 +1,13 @@
 <template>
-  <div class="container" ref="btnGroup">
-    <el-button :type="hasResume ? 'warning' : 'primary'" @click="newResume" @mouseleave="removeClass">{{hasResume?'编辑':'新建'}}简历</el-button>
-    <el-button type="success" v-loading.fullscreen.lock="fullscreenLoading" @click="exResume" @mouseleave="removeClass">导出简历</el-button>
-  </div>
-  <a href="mailto:32413082@qq.com" style="position: absolute;right: 12px;bottom: 8px;color: #409eff;text-decoration: underline;">feedback:<span>32413082@qq.com</span></a>
+  <transition>
+    <div class="container" ref="btnGroup" data-fadeIn fade-in-zoom-in>
+      <el-button :type="hasResume ? 'warning' : 'primary'" @click="newResume" @mouseleave="removeClass">{{hasResume?'编辑':'新建'}}简历</el-button>
+      <el-button type="success" v-loading.fullscreen.lock="fullscreenLoading" @click="exResume" @mouseleave="removeClass">导出简历</el-button>
+    </div>
+  </transition>
+  <transition>
+    <a data-fadeIn fade-in-zoom-in href="mailto:32413082@qq.com" style="position: absolute;right: 12px;bottom: 8px;color: #409eff;text-decoration: underline;">feedback:<span>32413082@qq.com</span></a>
+  </transition>
 </template>
 
 <script>
@@ -11,6 +15,7 @@
   import { useRouter } from 'vue-router'
   import { useStore } from 'vuex'
   import { ElMessageBox } from 'element-plus'
+import fadeIn from '@/hooks/fadeIn'
   
   export default {
     name: 'HomeMain',
@@ -62,6 +67,8 @@
             }
           })
         }
+
+        fadeIn()
       })
 
       const newResume = () => {

@@ -1,20 +1,22 @@
 <template>
-  <div class="container">
-    <step :msg="'step5'"></step>
-    <el-form :model="form" size="large">
-      <div v-for="item,index in form" :key="item.id">
-        <h2 style="margin-bottom: 16px;">项目经历{{index + 1}}{{item.project ? '--' + item.project : ''}}</h2>
-        <add-project ref="addProjectWindow" :data="item" @removeProject="removeProject(index)"></add-project>
-      </div>
-      <el-button type="success" size="large" style="width: 100%" @click="addProject">
-        <h2>新增一个项目经历</h2>
-      </el-button>
-      <el-form-item style="margin-top: 24px">
-        <el-button type="success" @click="onSubmit()">下一步</el-button>
-        <el-button @click="goBack">取消</el-button>
-      </el-form-item>
-    </el-form>
-  </div>
+  <transition>
+    <div class="container" data-fadeIn fade-in-left>
+      <step :msg="'step5'"></step>
+      <el-form :model="form" size="large">
+        <div v-for="item,index in form" :key="item.id">
+          <h2 style="margin-bottom: 16px;">项目经历{{index + 1}}{{item.project ? '--' + item.project : ''}}</h2>
+          <add-project ref="addProjectWindow" :data="item" @removeProject="removeProject(index)"></add-project>
+        </div>
+        <el-button type="success" size="large" style="width: 100%" @click="addProject">
+          <h2>新增一个项目经历</h2>
+        </el-button>
+        <el-form-item style="margin-top: 24px">
+          <el-button type="success" @click="onSubmit()">下一步</el-button>
+          <el-button @click="goBack">取消</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -24,6 +26,7 @@
   import { useStore } from 'vuex'
   import AddProject from '../function/AddProject.vue'
   import { nanoid } from 'nanoid'
+  import fadeIn from '@/hooks/fadeIn'
 
   export default {
     name: 'ProjectPage',
@@ -97,6 +100,7 @@
         if (store.state.step5Data.data.length >= 1) {
           form.value = [ ...store.state.step5Data.data ]
         }
+        fadeIn()
       })
 
       return {

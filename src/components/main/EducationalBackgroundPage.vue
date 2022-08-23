@@ -1,20 +1,22 @@
 <template>
-  <div class="container">
-    <step :msg="'step4'"></step>
-    <el-form :model="form" size="large">
-      <div v-for="item,index in form" :key="item.id">
-        <h2 style="margin-bottom: 16px;">教育背景{{index + 1}}{{item.college ? `--${item.college}/${item.education}` : ''}}</h2>
-        <add-education ref="addEducationWindow" :data="item" @removeEducation="removeEducation(index)"></add-education>
-      </div>
-      <el-button type="primary" size="large" style="width: 100%" @click="addEducationalBackground">
-        <h2>新增一个教育背景</h2>
-      </el-button>
-      <el-form-item style="margin-top: 24px">
-        <el-button type="primary" @click="onSubmit()">下一步</el-button>
-        <el-button @click="goBack">取消</el-button>
-      </el-form-item>
-    </el-form>
-  </div>
+  <transition>
+    <div class="container" data-fadeIn fade-in-left>
+      <step :msg="'step4'"></step>
+      <el-form :model="form" size="large">
+        <div v-for="item,index in form" :key="item.id">
+          <h2 style="margin-bottom: 16px;">教育背景{{index + 1}}{{item.college ? `--${item.college}/${item.education}` : ''}}</h2>
+          <add-education ref="addEducationWindow" :data="item" @removeEducation="removeEducation(index)"></add-education>
+        </div>
+        <el-button type="primary" size="large" style="width: 100%" @click="addEducationalBackground">
+          <h2>新增一个教育背景</h2>
+        </el-button>
+        <el-form-item style="margin-top: 24px">
+          <el-button type="primary" @click="onSubmit()">下一步</el-button>
+          <el-button @click="goBack">取消</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -24,6 +26,7 @@
   import { useRouter } from 'vue-router'
   import { useStore } from 'vuex'
   import { nanoid } from 'nanoid'
+  import fadeIn from '@/hooks/fadeIn'
 
   export default {
     name: 'EducationalBackgroundPage',
@@ -97,6 +100,7 @@
         if (store.state.step4Data.data.length >= 1) {
           form.value = [ ...store.state.step4Data.data ]
         }
+        fadeIn()
       })
 
       return {

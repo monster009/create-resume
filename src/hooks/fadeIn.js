@@ -4,11 +4,11 @@ const fadeIn = () => {
   const showFadeInElement = (element) => {
     let duration = element.getAttribute('data-fadeIn')
     let delay = element.getAttribute('data-fadeIn-delay')
-    if (delay) {
-      element.style.animationDelay = delay + 's'
-    }
     if (duration) {
       element.style.animationDuration = duration + 's'
+    }
+    if (delay) {
+      element.style.animationDelay = delay + 's'
     }
     element.classList.add('fade-in')
   }

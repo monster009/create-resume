@@ -1,20 +1,22 @@
 <template>
-  <div class="container">
-    <step :msg="'step6'"></step>
-    <el-form :model="form" size="large">
-      <div v-for="item,index in form" :key="item.id">
-        <h2 style="margin-bottom: 16px;">自定义模块{{index + 1}}{{item.title ? '--' + item.title : ''}}</h2>
-        <add-custom-model ref="addModelWindow" :data="item" @removeModel="removeModel(index)"></add-custom-model>
-      </div>
-      <el-button type="warning" size="large" style="width: 100%" @click="addModel">
-        <h2>新增一个自定义模块</h2>
-      </el-button>
-      <el-form-item style="margin-top: 24px">
-        <el-button type="warning" v-loading.fullscreen.lock="fullscreenLoading" @click="onSubmit()">完成</el-button>
-        <el-button @click="goBack">取消</el-button>
-      </el-form-item>
-    </el-form>
-  </div>
+  <transition>
+    <div class="container" data-fadeIn fade-in-left>
+      <step :msg="'step6'"></step>
+      <el-form :model="form" size="large">
+        <div v-for="item,index in form" :key="item.id">
+          <h2 style="margin-bottom: 16px;">自定义模块{{index + 1}}{{item.title ? '--' + item.title : ''}}</h2>
+          <add-custom-model ref="addModelWindow" :data="item" @removeModel="removeModel(index)"></add-custom-model>
+        </div>
+        <el-button type="warning" size="large" style="width: 100%" @click="addModel">
+          <h2>新增一个自定义模块</h2>
+        </el-button>
+        <el-form-item style="margin-top: 24px">
+          <el-button type="warning" v-loading.fullscreen.lock="fullscreenLoading" @click="onSubmit()">完成</el-button>
+          <el-button @click="goBack">取消</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -27,6 +29,8 @@
   import saveJSON from '@/hooks/saveJSON'
   import { ElMessageBox } from 'element-plus'
   import { encrypt } from '@/hooks/crypto'
+  import fadeIn from '@/hooks/fadeIn'
+
   export default {
     name: 'CustomPage',
     components: {
@@ -59,6 +63,7 @@
           confirmButtonText: '导出',
           cancelButtonText: '不导出',
           type: 'info',
+          distinguishCancelAndClose: true
         }).then((status) => {
           if(status == 'confirm') {
             fullscreenLoading.value = true
@@ -113,6 +118,7 @@
         if (store.state.step6Data.length >= 1) {
           form.value = [ ...store.state.step6Data ]
         }
+        fadeIn()
       })
 
       return {

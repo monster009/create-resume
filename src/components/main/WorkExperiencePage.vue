@@ -1,20 +1,22 @@
 <template>
-  <div class="container">
-    <step :msg="'step3'"></step>
-    <el-form :model="form" size="large">
-      <div v-for="item,index in form" :key="item.id">
-        <h2 style="margin-bottom: 16px;">工作经历{{index + 1}}{{item.company ? '--' + item.company : ''}}</h2>
-        <add-work ref="addWorkWindow" :data="item" @removeWork="removeWork(index)"></add-work>
-      </div>
-      <el-button type="warning" size="large" style="width: 100%" @click="addWorkExperience">
-        <h2>新增一份工作经历</h2>
-      </el-button>
-      <el-form-item style="margin-top: 24px">
-        <el-button type="warning" @click="onSubmit()">下一步</el-button>
-        <el-button @click="goBack">取消</el-button>
-      </el-form-item>
-    </el-form>
-  </div>
+  <transition>
+    <div class="container" data-fadeIn fade-in-left>
+      <step :msg="'step3'"></step>
+      <el-form :model="form" size="large">
+        <div v-for="item,index in form" :key="item.id">
+          <h2 style="margin-bottom: 16px;">工作经历{{index + 1}}{{item.company ? '--' + item.company : ''}}</h2>
+          <add-work ref="addWorkWindow" :data="item" @removeWork="removeWork(index)"></add-work>
+        </div>
+        <el-button type="warning" size="large" style="width: 100%" @click="addWorkExperience">
+          <h2>新增一份工作经历</h2>
+        </el-button>
+        <el-form-item style="margin-top: 24px">
+          <el-button type="warning" @click="onSubmit()">下一步</el-button>
+          <el-button @click="goBack">取消</el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -24,6 +26,7 @@
   import { useStore } from 'vuex'
   import AddWork from '../function/AddWork.vue'
   import { nanoid } from 'nanoid'
+  import fadeIn from '@/hooks/fadeIn'
 
   export default {
     name: 'WorkExperiencePage',
@@ -100,6 +103,7 @@
           // 结构深拷贝第一层，不影响store.state.step3Data
           form.value = [...store.state.step3Data.data]
         }
+        fadeIn()
       })
 
       return {

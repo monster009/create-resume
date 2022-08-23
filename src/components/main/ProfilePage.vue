@@ -1,14 +1,16 @@
 <template>
-  <div class="container">
-    <step :msg="'step2'"></step>
-    <el-form ref="formRef" size="large">
-      <tip-tap :text="text" :color="'success'" @changeText="changeTextFn"></tip-tap>
-      <div style="text-align: left; margin-top: 12px">
-        <el-button type="success" @click="onSubmit()">下一步</el-button>
-        <el-button @click="goBack">取消</el-button>
-      </div>
-    </el-form>
-  </div>
+  <transition>
+    <div class="container" data-fadeIn fade-in-left>
+      <step :msg="'step2'"></step>
+      <el-form ref="formRef" size="large">
+        <tip-tap :text="text" :color="'success'" @changeText="changeTextFn"></tip-tap>
+        <div style="text-align: left; margin-top: 12px">
+          <el-button type="success" @click="onSubmit()">下一步</el-button>
+          <el-button @click="goBack">取消</el-button>
+        </div>
+      </el-form>
+    </div>
+  </transition>
 </template>
 
 <script>
@@ -18,6 +20,7 @@
   import { useRouter } from 'vue-router'
   import { useStore } from 'vuex'
   import { nanoid } from 'nanoid'
+  import fadeIn from '@/hooks/fadeIn'
 
   export default {
     name: 'ProfilePage',
@@ -34,6 +37,7 @@
 
       onMounted(() => {
         text.value = store.state.step2Data.text ? store.state.step2Data.text : ''
+        fadeIn()
       })
 
       const changeTextFn = (val) => {

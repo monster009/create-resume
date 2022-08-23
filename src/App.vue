@@ -37,7 +37,7 @@ export default {
    }
   .fade-in {
     animation-fill-mode: forwards;
-    animation: fadeInUp 1s 0.2s ease both;
+    animation: fadeInUp .5s 0.2s ease both;
   }
   .fade-in[fade-in-up] {
     animation-name: fadeInUp;
@@ -51,11 +51,17 @@ export default {
   .fade-in[fade-in-left] {
     animation-name: fadeInLeft;
   }
+  .fade-in[fade-in-zoom-in] {
+    animation-name: fadeInZoomIn;
+  }
+  .fade-in[fade-in-zoom-out] {
+    animation-name: fadeInZoomOut;
+  }
 
   @keyframes fadeInUp {
     0% {
       opacity: 0;
-      transform: translateY(40px);
+      transform: translateY(30px);
     }
 
     100% {
@@ -66,7 +72,7 @@ export default {
   @keyframes fadeInDown {
     0% {
       opacity: 0;
-      transform: translateY(-40px);
+      transform: translateY(-30px);
     }
 
     100% {
@@ -77,7 +83,7 @@ export default {
   @keyframes fadeInRight {
     0% {
       opacity: 0;
-      transform: translateX(-40px);
+      transform: translateX(-30px);
     }
 
     100% {
@@ -88,12 +94,34 @@ export default {
   @keyframes fadeInLeft {
     0% {
       opacity: 0;
-      transform: translateX(40px);
+      transform: translateX(30px);
     }
 
     100% {
       opacity: 1;
       transform: translateX(0);
+    }
+  }
+  @keyframes fadeInZoomIn {
+    0% {
+      opacity: 0;
+      transform: scale(0)
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1)
+    }
+  }
+  @keyframes fadeInZoomOut {
+    0% {
+      opacity: 0;
+      transform: scale(2)
+    }
+
+    100% {
+      opacity: 1;
+      transform: scale(1)
     }
   }
 </style>
