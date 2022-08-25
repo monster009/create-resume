@@ -80,7 +80,7 @@ import fadeIn from '@/hooks/fadeIn'
         setTimeout(() => {
           fullscreenLoading.value = false
           if (hasResume.value) {
-            router.push('/showResume')
+            router.push('/exportResume')
           } else {
             ElMessageBox.confirm('暂无本地简历缓存，请跳转到新建简历页面新建简历。', '提示', {
               confirmButtonText: '跳转',

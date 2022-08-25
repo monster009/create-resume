@@ -72,7 +72,7 @@
               </el-scrollbar>
             </el-aside>
             <el-main>
-              <show-resume :form="form" :changeIndex="changeIndex"></show-resume>
+              <export-resume :form="form" :changeIndex="changeIndex"></export-resume>
             </el-main>
           </div>
         </el-scrollbar>
@@ -84,7 +84,7 @@
 <script>
   import 'element-plus/es/components/message-box/style/css'
   import { ElMessageBox } from 'element-plus'
-  import ShowResume from '../main/ShowResume.vue'
+  import ExportResume from '../main/ExportResume.vue'
 
   import { useRoute } from 'vue-router'
   import { useStore } from 'vuex'
@@ -94,7 +94,7 @@
   export default {
     name: 'HeaderMain',
     components: {
-      ShowResume,
+      ExportResume,
     },
     setup() {
       const route = useRoute()
@@ -105,7 +105,7 @@
       const form = reactive({
         ptpb: 30,
         prpl: 50,
-        showAge: false,
+        showAge: true,
         nameSize: 32,
         fontSize: 16,
         lineHeight: 16,

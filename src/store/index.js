@@ -16,10 +16,12 @@ const defaultData = {
     birthday: '',
     phoneNumber: '',
     email: '',
-    wechat: '',
-    address: [],
+    JobObjective: '',
     currentState: '',
-    avatar: '',
+    wechat: '',
+    github: '',
+    address: [],
+    avatar: ''
   },
   step2Data: {
     id: '',
@@ -54,10 +56,11 @@ export default createStore({
       birthday: '',
       phoneNumber: '',
       email: '',
+      JobObjective: '',
+      currentState: '',
       wechat: '',
       github: '',
       address: [],
-      currentState: '',
       avatar: ''
     },
     step2Data: {

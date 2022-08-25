@@ -23,6 +23,23 @@
           </el-form-item>
         </div>
         <div class="formRow">
+          <el-form-item label="求职意向">
+            <el-input v-model.number="form.JobObjective" placeholder="岗位" clearable />
+          </el-form-item>
+          <el-form-item label="当前状态">
+            <el-select v-model="form.currentState" placeholder="在职/离职" clearable>
+              <el-option value="在职-一个月内到岗" />
+              <el-option value="在职-两周内到岗" />
+              <el-option value="在职-一周内到岗" />
+              <el-option value="在职-随时到岗" />
+              <el-option value="离职-一个月内到岗" />
+              <el-option value="离职-两周内到岗" />
+              <el-option value="离职-一周内到岗" />
+              <el-option value="离职-随时到岗" />
+            </el-select>
+          </el-form-item>
+        </div>
+        <div class="formRow">
           <el-form-item label="微信" prop="wechat">
             <el-input v-model="form.wechat" placeholder="微信" clearable />
           </el-form-item>
@@ -36,18 +53,6 @@
           </el-form-item>
         <el-form-item label="居住地">
           <elui-china-area-dht v-model="form.address" placeholder="详细地址" clearable ></elui-china-area-dht>
-        </el-form-item>
-        <el-form-item label="当前状态">
-          <el-select v-model="form.currentState" placeholder="在职/离职" clearable>
-            <el-option value="在职-一个月内到岗" />
-            <el-option value="在职-两周内到岗" />
-            <el-option value="在职-一周内到岗" />
-            <el-option value="在职-随时到岗" />
-            <el-option value="离职-一个月内到岗" />
-            <el-option value="离职-两周内到岗" />
-            <el-option value="离职-一周内到岗" />
-            <el-option value="离职-随时到岗" />
-          </el-select>
         </el-form-item>
         <el-form-item label="个人照片">
           <el-upload
@@ -117,10 +122,11 @@
         birthday: '',
         phoneNumber: '',
         email: '',
+        JobObjective: '',
+        currentState: '',
         wechat: '',
         github: '',
         address: [],
-        currentState: '',
         avatar:  ''
       })
 

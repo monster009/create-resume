@@ -12,7 +12,7 @@
   import DefaultStyle from '@/components/resume-style/DefaultStyle'
   import { computed } from 'vue-demi'
   export default {
-    name: 'ShowResume',
+    name: 'ExportResume',
     components: {
       DefaultStyle
     },

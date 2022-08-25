@@ -1,5 +1,5 @@
 <template>
-  <el-header :class="route.name === 'showResume' ? 'dark' : 'default'">
+  <el-header :class="route.name === 'exportResume' ? 'dark' : 'default'">
     <div class="header-container">
       <router-link class="logo" to="/">
         <svg viewBox="0 0 1024 1024" width="50" height="50" style="display: inline-block;"

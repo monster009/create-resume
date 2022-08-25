@@ -14,8 +14,9 @@
           <div>
             <div style="display: flex;align-items: flex-end;">
               <h1 class="name" :style="`font-size: ${form.nameSize}px`">{{state.step1Data.name}}</h1>
-              <p class="sex" style="margin-left: 16px;">{{state.step1Data.sex}}</p>
-              <p v-if="state.step1Data.birthday" class="birthday" style="margin-left: 16px;">
+              <strong v-if="state.step1Data.JobObjective" class="Job-objective" :style="`font-size: ${form.h2Size}px; margin-left: 12px;`">{{state.step1Data.JobObjective}}</strong>
+              <p class="sex" style="margin-left: 12px;">{{state.step1Data.sex}}</p>
+              <p v-if="state.step1Data.birthday" class="birthday" style="margin-left: 12px;">
                 {{form.showAge ? `${age}岁` : state.step1Data.birthday.substr(0,7)}}
               </p>
             </div>
@@ -87,7 +88,7 @@
   import { ElMessage } from 'element-plus'
 
   export default {
-    name: 'ShowResume',
+    name: 'DefaultStyle',
     props: [
       'state',
       'form',
@@ -239,7 +240,7 @@
     line-height: 1.3;
   }
   .avatar {
-    margin-left: 80px;  
+    margin-left: 40px;  
   }
   .basic-info {
     display: flex;

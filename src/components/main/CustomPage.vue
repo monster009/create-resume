@@ -71,7 +71,7 @@
             saveJSON(encryptData, `${store.state.step1Data.name}的简历数据${store.state.id}`)
             setTimeout(() => {
               fullscreenLoading.value = false
-              router.push('/showResume')
+              router.push('/exportResume')
             }, 2000)
           }
         }).catch((status) => {
@@ -79,7 +79,7 @@
             fullscreenLoading.value = true
             setTimeout(() => {
               fullscreenLoading.value = false
-              router.push('/showResume')
+              router.push('/exportResume')
             }, 2000)
           }
         })
