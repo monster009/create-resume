@@ -1,12 +1,6 @@
 import { createStore } from 'vuex'
 import { nanoid } from 'nanoid'
-// import { EluiChinaAreaDht } from 'elui-china-area-dht'
-// // const chinaData = new EluiChinaAreaDht.ChinaArea().chinaAreaflat
-// // const getChinaData = (arr) => {
-// //   if (Array.isArray(arr) && arr.length > 0) {
-// //     return arr.map(item => chinaData[item])
-// //   }
-// // }
+
 const defaultData = {
   id: nanoid(),
   step1Data: {

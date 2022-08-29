@@ -110,9 +110,9 @@
         fontSize: 16,
         lineHeight: 16,
         h2Size: 24,
-        moduleMt: 12,
-        nodeMt: 16,
-        h2Mb: 20,
+        moduleMt: 19,
+        nodeMt: 26,
+        h2Mb: 22,
         h3Size: 20,
         h4Size: 18
       })

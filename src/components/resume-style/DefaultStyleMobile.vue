@@ -72,7 +72,7 @@
           <div style="flex-shrink: 0; margin-left: 16px; text-align: right;">{{item.inProject}} 至 {{item.outProject}}</div>
         </div>
         <div v-if="item.text">
-          <h4>项目详情：</h4>
+          <!-- <h4>项目详情：</h4> -->
           <p v-html="item.text"></p>
         </div>
         <div v-if="item.link">

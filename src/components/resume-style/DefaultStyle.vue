@@ -62,7 +62,7 @@
               <div style="flex-shrink: 0; margin-left: 16px;">{{item.inProject}} 至 {{item.outProject}}</div>
             </div>
             <div v-if="item.text">
-              <h4 :style="`font-size: ${form.h4Size}px;`">项目详情：</h4>
+              <!-- <h4 :style="`font-size: ${form.h4Size}px;`">项目详情：</h4> -->
               <p v-html="item.text"></p>
             </div>
             <div v-if="item.link">
@@ -152,10 +152,11 @@
       })
       
       const downloadPdf = () => {
+        const a4ContainerNode = document.getElementById('a4Container')
         fullscreenLoading.value = true
-        h2cOptions.width = a4Container.value.offsetWidth
-        h2cOptions.height = a4Container.value.offsetHeight
-        html2canvas(a4Container.value,h2cOptions).then(canvas => {
+        h2cOptions.width = a4ContainerNode.offsetWidth
+        h2cOptions.height = a4ContainerNode.offsetHeight
+        html2canvas(a4ContainerNode, h2cOptions).then(canvas => {
           try {
             //未生成pdf的html页面高度
             let leftHeight = canvas.height
@@ -203,15 +204,16 @@
               a.click()
               window.URL.revokeObjectURL(blobUrl)
             }
-            downloadPDF(pdf.output('blob'), `${props.state.step1Data.name}的个人简历.pdf`)
+            downloadPDF(pdf.output('blob'), props.state.step1Data.JobObjective ? `${props.state.step1Data.name}-${props.state.step1Data.JobObjective}.pdf` : `${props.state.step1Data.name}的个人简历.pdf`)
           } catch (e) {
             ElMessage.error('失败了')
             console.log(e);
           } finally {
             fullscreenLoading.value = false
           }
-        }).catch(() => {
+        }).catch((e) => {
           fullscreenLoading.value = false
+          console.log(e);
         });
       }
       return {
