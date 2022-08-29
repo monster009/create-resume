@@ -5,14 +5,11 @@
 </template>
 
 <script>
-  // import { ref } from 'vue'
-  // import { decrypt } from '@/hooks/crypto'
-  // import store from '@/store/index'
   import { useStore } from 'vuex'
   import DefaultStyle from '@/components/resume-style/DefaultStyle'
-  import { computed } from 'vue-demi'
+  import { computed } from 'vue'
   export default {
-    name: 'ExportResume',
+    name: 'ExportResumeMain',
     components: {
       DefaultStyle
     },
@@ -23,12 +20,6 @@
     setup () {
       const store = useStore()
       const state = computed(() => store.state)
-      // const { state } = store
-      // fetch('/OJIGFqFzlR7DK8JjHTbh-.json').then((response)=> {
-      //   response.text().then((jsonContent) => {
-      //       console.log(JSON.parse(decrypt(jsonContent)))
-      //   })
-      // })
       return {
         state
       }

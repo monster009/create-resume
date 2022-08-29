@@ -72,7 +72,7 @@
               </el-scrollbar>
             </el-aside>
             <el-main>
-              <export-resume :form="form" :changeIndex="changeIndex"></export-resume>
+              <export-resume-main :form="form" :changeIndex="changeIndex"></export-resume-main>
             </el-main>
           </div>
         </el-scrollbar>
@@ -84,23 +84,23 @@
 <script>
   import 'element-plus/es/components/message-box/style/css'
   import { ElMessageBox } from 'element-plus'
-  import ExportResume from '../main/ExportResume.vue'
+  import ExportResumeMain from '../main/ExportResumeMain.vue'
 
   import { useRoute } from 'vue-router'
   import { useStore } from 'vuex'
-  import { ref, reactive, toRefs } from 'vue'
+  import { ref, reactive, toRefs, onMounted } from 'vue'
   import isPC from '@/hooks/isPC'
 
   export default {
     name: 'HeaderMain',
     components: {
-      ExportResume,
+      ExportResumeMain,
     },
     setup() {
       const route = useRoute()
       const store = useStore()
       const equipmentIsPC = ref(isPC())
-      let dragData = ref(store.getters.getResumeData())
+      let dragData = ref()
       const hiddenAside = ref(false)
       const form = reactive({
         ptpb: 30,
@@ -149,7 +149,14 @@
         }
       })
       const refDrageEvent = toRefs(dragEvent)
-
+      
+      onMounted(() => {
+        if (route.query.sort) {
+          dragData.value = store.getters.getResumeData(route.query.sort)
+        } else {
+          dragData.value = store.getters.getResumeData()
+        }
+      })
       return {
         route,
         equipmentIsPC,

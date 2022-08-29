@@ -4,7 +4,7 @@
       <global-header :route="route"></global-header>
       <el-main>
         <el-scrollbar>
-          <div class="main-container">
+          <div class="main-container" v-if="route.name === 'edit' || route.name === 'home'">
             <basic-page v-if="route.params.id === 'step1'" @formError="formError"></basic-page>
             <profile-page v-else-if="route.params.id === 'step2'" ></profile-page>
             <work-experience-page v-else-if="route.params.id === 'step3'" @formError="formError"></work-experience-page>
@@ -13,6 +13,9 @@
             <custom-page v-else-if="route.params.id === 'step6'" @formError="formError"></custom-page>
             <home-main v-else></home-main>
           </div>
+          <show-resume-main v-else-if="route.name === 'showResume'">
+            
+          </show-resume-main>
         </el-scrollbar>
       </el-main>
     </el-container>

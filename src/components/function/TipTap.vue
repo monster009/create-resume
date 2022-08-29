@@ -116,7 +116,7 @@
   }
   @media (min-width: 768px) {
     .ProseMirror {
-      height: 160px;
+      height: 240px;
     }
   }
 </style>

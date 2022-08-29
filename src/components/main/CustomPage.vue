@@ -68,7 +68,7 @@
           if(status == 'confirm') {
             fullscreenLoading.value = true
             const encryptData = encrypt({...store.state})
-            saveJSON(encryptData, `${store.state.step1Data.name}的简历数据${store.state.id}`)
+            saveJSON(encryptData, store.state.id)
             setTimeout(() => {
               fullscreenLoading.value = false
               router.push('/exportResume')

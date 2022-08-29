@@ -7,6 +7,7 @@ import store from '../store/index'
 import Home from '../views/HomeView.vue'
 import EditView from '../views/EditView.vue'
 import ExportResumeView from '../views/ExportResumeView.vue'
+import ShowResumeView from '../views/ShowResumeView.vue'
 import NotFoundView from '../views/NotFoundView.vue'
 
 const routes = [
@@ -36,6 +37,12 @@ const routes = [
     ]
   },
   {
+    path: '/showResume',
+    name: 'showResume',
+    // component: () => import('../views/ShowResumeView.vue'),
+    component: ShowResumeView
+  },
+  {
     path: '/404',
     name: 'NotFound',
     // component: () => import('../views/NotFoundView.vue')
@@ -60,7 +67,7 @@ router.beforeEach((to, from, next) => {
   if (!state.step1Data.name || !state.step1Data.sex) {
     if (res.test(to.path)) {
       next('/edit/step1')
-    } else if (to.path.indexOf('/exportResume') >= 0) {
+    } else if (to.path.indexOf('/exportResume') >= 0 || to.path.indexOf('/showResume') >= 0) {
       next('/')
     } else {
       next()

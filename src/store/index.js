@@ -86,8 +86,13 @@ export default createStore({
     step6Data: []
   },
   getters: {
-    getResumeData: (state) => () => {
-      return new Array(state.step2Data, state.step3Data, state.step4Data, state.step5Data, ...state.step6Data)
+    getResumeData: (state) => (sortNum) => {
+      const sortData = new Array(state.step2Data, state.step3Data, state.step4Data, state.step5Data, ...state.step6Data)
+      if (sortNum) {
+        const oldSortData = [...sortData]
+        const newSortData = sortNum.split(',').map(item => oldSortData[item - 1])
+        return newSortData
+      } else return sortData
     },
   },
   mutations: {
